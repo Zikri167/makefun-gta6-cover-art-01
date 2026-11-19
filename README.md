@@ -6,6 +6,10 @@
 
 Neon Palms Cover Studio — a static, fully offline web app that turns your own photos and a caption into GTA-poster-style cover art. Six multi-panel layouts, six sunset/neon colour grades plus a posterise ink mode, per-panel crop/drag/zoom, caption and script-subtitle lettering in bundled OFL fonts, and one-click PNG export at 1080x1080, 1080x1350 and 1920x1080. Photos are read on your own machine and never uploaded; everything the app loads is a file in app/.
 
+## How it works
+
+Pick a layout, drop a photo into each panel, drag and zoom to frame it, choose a grade, type a caption and a subtitle, then export a PNG. The app is plain HTML, CSS and hand-written JavaScript under app/ — no libraries, no network requests, no build step.
+
 ## Run it
 
 ```sh
