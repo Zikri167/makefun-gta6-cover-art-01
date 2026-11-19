@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Palms — Cover Art Studio</title>
+<meta name="description" content="Turn your own photos and a caption into multi-panel poster cover art with a sunset-neon grade, exported as a PNG. Runs fully offline; your photos never leave your machine.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">NEON PALMS</span>
+    <span class="brand-sub">cover art studio</span>
+  </div>
+  <div class="top-actions">
+    <button id="undoBtn" type="button" title="Undo (Ctrl+Z)">↶ Undo</button>
+    <button id="redoBtn" type="button" title="Redo (Ctrl+Shift+Z)">↷ Redo</button>
+    <label class="size-label">Size
+      <select id="sizeSel"></select>
+    </label>
+    <button id="exportBtn" type="button" class="primary">Export PNG</button>
+  </div>
+</header>
+
+<main class="workspace">
+  <aside class="rail">
+    <section>
+      <h2>Photos</h2>
+      <div id="tray" class="tray"></div>
+      <button id="addPhotosBtn" type="button" class="wide">+ Add your photos</button>
+      <input id="fileInput" type="file" accept="image/*" multiple hidden>
+      <p class="hint">Your photos are read on this machine and never uploaded. Click a photo to drop it into the selected panel, or drag files onto the cover.</p>
+      <button id="spreadBtn" type="button" class="wide">Fill every panel with the picked photo</button>
+      <button id="shuffleBtn" type="button" class="wide">Shuffle the photos</button>
+    </section>
+
+    <section>
+      <h2>Layout</h2>
+      <div id="layoutChips" class="chips"></div>
+    </section>
+
+    <section>
+      <h2>Colour grade</h2>
+      <div id="gradeChips" class="chips"></div>
+      <label class="slider">Grade strength
+        <input id="gradeAmt" type="range" min="0" max="100" value="85">
+      </label>
+      <label class="check"><input id="inkToggle" type="checkbox"> Ink mode — flat posterised colour</label>
+      <label class="check"><input id="grainToggle" type="checkbox" checked> Film grain</label>
+      <label class="check"><input id="vigToggle" type="checkbox" checked> Vignette</label>
+    </section>
+  </aside>
+
+  <section class="stage-wrap">
+    <canvas id="stage" width="1920" height="1080"></canvas>
+    <p class="hint center">Click a panel to select it. Drag to move its photo, scroll to zoom it.</p>
+  </section>
+
+  <aside class="rail">
+    <section>
+      <h2>Caption</h2>
+      <label class="field">Title
+        <input id="captionInput" type="text" value="NEON PALMS" maxlength="42" autocomplete="off">
+      </label>
+      <label class="field">Script subtitle
+        <input id="subtitleInput" type="text" value="vice nights" maxlength="42" autocomplete="off">
+      </label>
+      <label class="field">Lettering
+        <select id="letterSel"></select>
+      </label>
+      <label class="slider">Title size
+        <input id="captionSize" type="range" min="60" max="160" value="100">
+      </label>
+    </section>
+
+    <section>
+      <h2 id="panelName">Panel</h2>
+      <p id="panelPhotoName" class="hint"></p>
+      <label class="slider">Zoom
+        <input id="zoomRange" type="range" min="100" max="400" value="100">
+      </label>
+      <label class="slider">Move across
+        <input id="xRange" type="range" min="-100" max="100" value="0">
+      </label>
+      <label class="slider">Move up / down
+        <input id="yRange" type="range" min="-100" max="100" value="0">
+      </label>
+      <label class="check"><input id="panelSpreadToggle" type="checkbox"> This panel shows the whole-cover crop</label>
+    </section>
+
+    <section>
+      <h2>Poster extras</h2>
+      <label class="check"><input id="badgeToggle" type="checkbox" checked> Corner ribbon</label>
+      <label class="field">Ribbon text
+        <input id="badgeInput" type="text" value="LAUNCH WEEK" maxlength="24" autocomplete="off">
+      </label>
+      <label class="slider">Heat meter ★ <span id="starsVal">5</span> of 5
+        <input id="starsRange" type="range" min="0" max="5" step="1" value="5">
+      </label>
+    </section>
+
+    <section>
+      <h2>Export</h2>
+      <div id="quickExport" class="quick-export"></div>
+      <p class="hint">One click writes a share-ready PNG at full size. The big Export PNG button up top uses the size picked beside it.</p>
+    </section>
+  </aside>
+</main>
+
+<footer class="foot">
+  <span>Neon Palms is an original fan-made studio. Every letter, grade and panel is drawn locally in your browser.</span>
+</footer>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
